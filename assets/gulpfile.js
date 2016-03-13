@@ -193,7 +193,7 @@ gulp.task('spa', function() {
 gulp.task('watch', ['jade','sass','img'], function() {
   gulp.watch('./sass/**/*.sass', ['sass']);
   gulp.watch('./svg/**/*.svg', ['svg']);
-  gulp.watch('./img/**/*', ['img']);
+  gulp.watch('./img/*', ['img']);
 });
 
 /**
