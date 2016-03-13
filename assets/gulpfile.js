@@ -155,7 +155,7 @@ gulp.task('sass', function(done) {
 /**
  * SPA Dev Server
  */
-gulp.task('spa', ['jade','sass','img'], function() {
+gulp.task('spa', function() {
 
   const Opts = {
     publicPath: path.join(__dirname, '../web/public'),
@@ -190,10 +190,10 @@ gulp.task('spa', ['jade','sass','img'], function() {
 /**
  * Assets Watcher
  */
-gulp.task('watch', function() {
+gulp.task('watch', ['jade','sass','img'], function() {
   gulp.watch('./sass/**/*.sass', ['sass']);
   gulp.watch('./svg/**/*.svg', ['svg']);
-  gulp.watch('./img/*', ['img']);
+  gulp.watch('./img/**/*', ['img']);
 });
 
 /**
