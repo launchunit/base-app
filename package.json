@@ -34,6 +34,6 @@
     "api": "NODE_ENV=production node --max_old_space_size=400 api/server.js",
     "web": "NODE_ENV=production node --max_old_space_size=400 web/server.js",
     "test": "ava tests/index.js",
-    "heroku-postbuild": "npm run"
+    "heroku-postbuild": "npm run build"
   }
 }
