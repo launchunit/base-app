@@ -30,10 +30,10 @@
     "sass:watch": "gulp --cwd assets sass:watch",
     "web:watch": "(nodemon web/server.js -i /api/ /assets/ /web/public/) & (npm run sass:watch)",
     "spa:watch": "gulp --cwd assets spa:watch",
-    "build": "NODE_ENV=production gulp --cwd assets build",
+    "prod:build": "NODE_ENV=production gulp --cwd assets build",
     "api": "NODE_ENV=production node --max_old_space_size=400 api/server.js",
     "web": "NODE_ENV=production node --max_old_space_size=400 web/server.js",
     "test": "ava tests/index.js",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run prod:build"
   }
 }
