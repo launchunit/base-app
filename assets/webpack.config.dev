@@ -15,7 +15,7 @@ module.exports = opts => {
         'eventsource-polyfill', // necessary for hot reloading with IE
         'webpack-hot-middleware/client',
         './spa/index',
-        opts.publicPath + '/css/bundle.css', // Including CSS
+        opts.publicPath + '/css/style.css', // Including CSS
       ],
       web: [
         './web/index'

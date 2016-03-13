@@ -29,7 +29,6 @@ config.rb
 
 node_modules/*
 tests/node_modules/*
-assets/node_modules/*
 
 # compiled stuff
 _app/*

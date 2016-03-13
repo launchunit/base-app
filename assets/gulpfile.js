@@ -30,7 +30,8 @@ gulp.task('svg', function() {
       },
       svg: {
         xmlDeclaration: false,
-        doctypeDeclaration: false
+        doctypeDeclaration: false,
+        dimensionAttributes: false,
       },
       mode: {
         symbol: {
@@ -48,6 +49,26 @@ gulp.task('svg', function() {
       showFiles: true
     }))
     .pipe(gulp.dest('../web/views/layouts'));
+});
+
+/**
+ * Img
+ */
+gulp.task('img', function() {
+
+  const imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant');
+
+  return gulp.src('./img/*')
+    .pipe(plumber())
+    .pipe(imagemin({
+      progressive: true,
+      use: [ pngquant() ]
+    }))
+    .pipe(size({
+      showFiles: true
+    }))
+    .pipe(gulp.dest('../web/public/img'));
 });
 
 /**
@@ -132,17 +153,18 @@ gulp.task('sass', function(done) {
 });
 
 /**
- * SASS Watcher
+ * Assets Watcher
  */
-gulp.task('sass:watch', function() {
+gulp.task('assets:watch', function() {
   gulp.watch('./sass/**/*.sass', ['sass']);
   gulp.watch('./svg/**/*.svg', ['svg']);
+  gulp.watch('./img/*', ['img']);
 });
 
 /**
  * SPA Watch Dev Server
  */
-gulp.task('spa:watch', ['jade','sass'], function() {
+gulp.task('spa:watch', ['jade','sass','img'], function() {
 
   const Opts = {
     publicPath: path.join(__dirname, '../web/public'),
@@ -172,16 +194,12 @@ gulp.task('spa:watch', ['jade','sass'], function() {
     console.log(`Listening at ${PORT}`);
     require('open')(`http://localhost:${PORT}`);
   });
-
-  // Listen For Changes
-  gulp.watch('./sass/**/*.sass', ['sass']);
-  gulp.watch(['svg/**/*.svg'], ['jade']);
 });
 
 /**
  * Prod Build
  */
-gulp.task('build', ['svg','sass'], function() {
+gulp.task('build', ['svg','sass','img'], function() {
 
   const Opts = {
     publicPath: path.join(__dirname, '../web/public'),

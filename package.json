@@ -21,11 +21,11 @@
     "redis-client": "https://github.com/launchunit/redis-client.git",
     "serve-static": "^1.10.2",
     "to-fast-properties": "^1.0.1",
+    "//": "For Web Spa",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
   "devDependencies": {
-    "falkor": "latest",
     "autoprefixer": "^6.3.3",
     "babel-core": "^6.3.15",
     "babel-eslint": "^5.0.0-beta4",
@@ -39,9 +39,11 @@
     "eslint-plugin-react": "^4.1.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
+    "falkor": "latest",
     "gulp": "^3.9.1",
     "gulp-csso": "^1.0.1",
     "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-jade": "^1.1.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.0",
@@ -49,22 +51,31 @@
     "gulp-sass": "^2.2.0",
     "gulp-size": "^2.0.0",
     "gulp-svg-sprite": "^1.2.19",
-    "lodash": "^4.6.0",
+    "imagemin-pngquant": "^4.2.2",
     "open": "0.0.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "2.9.0"
+    "webpack-hot-middleware": "2.10.0"
   },
   "scripts": {
-    "api:watch": "nodemon api/server.js",
-    "sass:watch": "gulp --cwd assets sass:watch",
-    "web:watch": "(nodemon web/server.js -i /api/ /assets/ /web/public/) & (npm run sass:watch)",
-    "spa:watch": "gulp --cwd assets spa:watch",
-    "prod:build": "NODE_ENV=production gulp --cwd assets build",
+    "//": "For Scripts Below",
+    "assets:watch": "gulp --cwd assets assets:watch",
+
+    "//": "Prod Assets Build",
+    "build": "NODE_ENV=production gulp --cwd assets build",
+    "heroku-postbuild": "npm run prod:build",
+
+    "//": "Test",
+    "test": "ava tests/index.js",
+
+    "//": "Prod",
     "api": "NODE_ENV=production node --optimize_for_size --max_old_space_size=400 --gc_interval=100 api/server.js",
     "web": "NODE_ENV=production node --optimize_for_size --max_old_space_size=400 --gc_interval=100 web/server.js",
-    "test": "ava tests/index.js",
-    "heroku-postbuild": "npm run prod:build"
+
+    "//": "Dev Watchers",
+    "api:watch": "nodemon api/server.js",
+    "web:watch": "(nodemon web/server.js -i /api/ /assets/ /web/public/) & (npm run assets:watch)",
+    "spa:watch": "gulp --cwd assets spa:watch assets:watch"
   }
 }
