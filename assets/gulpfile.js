@@ -72,7 +72,7 @@ gulp.task('img', function() {
 });
 
 /**
- * Jade
+ * Jade for SPA
  */
 gulp.task('jade', ['svg'], function() {
 
