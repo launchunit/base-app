@@ -1,0 +1,41 @@
+# osx noise
+.DS_Store
+# xcode noise
+build/*
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+
+# svn & cvs
+.svn
+CVS
+
+npm-debug.log
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.project
+config.rb
+
+node_modules/*
+tests/node_modules/*
+assets/node_modules/*
+
+# compiled stuff
+_app/*
+_framework/*
+web/views/**/*.svg
+web/public/css/*
+web/public/js/*
+web/public/img/*
+assets/spa/index.html

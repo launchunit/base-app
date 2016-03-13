@@ -1,0 +1,39 @@
+{
+  "name": "base-app",
+  "version": "0.0.1",
+  "engines": {
+    "node": "4.x.x",
+    "npm": "3.x.x"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "config-loader": "https://github.com/launchunit/config-loader.git",
+    "cortado": "https://github.com/launchunit/cortado.git",
+    "deep-freeze": "0.0.1",
+    "dir-loader": "https://github.com/launchunit/dir-loader.git",
+    "hpp": "^0.2.0",
+    "jade": "^1.11.0",
+    "lodash": "^4.1.0",
+    "logger": "https://github.com/launchunit/logger.git",
+    "mongodb-client": "https://github.com/launchunit/mongodb-client.git",
+    "promise-helpers": "https://github.com/launchunit/promise-helpers.git",
+    "redis-client": "https://github.com/launchunit/redis-client.git",
+    "serve-static": "^1.10.2",
+    "to-fast-properties": "^1.0.1"
+  },
+  "devDependencies": {
+    "falkor": "latest"
+  },
+  "scripts": {
+    "api:watch": "nodemon api/server.js",
+    "sass:watch": "gulp --cwd assets sass:watch",
+    "web:watch": "(nodemon web/server.js -i /api/ /assets/ /web/public/) & (npm run sass:watch)",
+    "spa:watch": "gulp --cwd assets spa:watch",
+    "build": "NODE_ENV=production gulp --cwd assets build",
+    "api": "NODE_ENV=production node --max_old_space_size=400 api/server.js",
+    "web": "NODE_ENV=production node --max_old_space_size=400 web/server.js",
+    "test": "ava tests/index.js",
+    "heroku-postbuild": "npm run"
+  }
+}

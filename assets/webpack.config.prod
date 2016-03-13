@@ -1,0 +1,60 @@
+
+const _ = require('lodash'),
+  path = require('path'),
+  webpack = require('webpack');
+
+
+module.exports = opts => {
+
+  return {
+
+    devtool: 'source-map',
+
+    entry: {
+      app: ['./spa/index'],
+      web: ['./web/index'],
+    },
+
+    output: {
+      path: opts.publicPath,
+      filename: 'js/[name].js',
+      publicPath: '/'
+    },
+
+    plugins: [
+      new webpack.DefinePlugin(Object.assign({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      }, _.mapValues(opts.locals, v => JSON.stringify(v)))),
+
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.AggressiveMergingPlugin(),
+
+      new webpack.optimize.UglifyJsPlugin({
+        output: {
+          comments: false
+        },
+        compress: {
+          properties: true,
+          drop_console: true,
+          screw_ie8: true,
+          drop_debugger: true,
+          dead_code: true,
+          unused: true
+        }
+      })
+    ],
+
+    module: {
+      loaders: [{
+        test: /\.jsx?/,
+        loader: 'babel',
+        include: path.join(__dirname,'spa')
+      }]
+    }
+
+  };
+};

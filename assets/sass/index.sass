@@ -1,0 +1,129 @@
+
+@charset "utf-8"
+
+/**
+ * Including Bulma
+ * http://bulma.io/documentation/overview/start/
+ */
+@import "bulma/bulma/utilities/utilities"
+@import "bulma/bulma/config/variables"
+
+/**
+ * Custom Variables
+ */
+$primary: #60BF65 // #364F6B
+$green: $primary
+$yellow: #FFCF27
+$grey-darker: $primary
+$secondary: #9868ac
+$blue: #9868ac
+
+@import "bulma/bulma/config/generated-variables"
+
+$text: $primary
+$body-background: #fff // $yellow
+$background: #fff // $yellow // #F6F6F7
+$border: darken(#F7F9FA, 5%) //lighten($grey-light, 4%)
+
+@import "bulma/bulma/base/base"
+@import "bulma/bulma/elements/elements"
+@import "bulma/bulma/components/components"
+@import "bulma/bulma/layout/layout"
+
+/**
+ * Bulma Extension
+ */
+@import "src/button"
+@import "src/helpers"
+@import "src/svg"
+
+/**
+ * App Style
+ */
+.is-landing
+  +desktop, +tablet
+    .hero-content
+      padding-bottom: 60px !important
+
+  .is-logo
+    display: inline-block
+    margin-bottom: 100px
+    max-width: 200px
+    img
+      width: 100%
+
+  .title, .subtitle
+    text-shadow: 1px 2px 2px rgba(0,0,0,0.1)
+    line-height: 1.1
+    color: $background !important
+
+  .subtitle
+    margin-top: 5px
+
+  .is-cta
+    margin-top: 30px
+    height: 50px
+    background: $secondary
+    border-color: $background
+    border-width: 2px
+    color: $background
+    &:hover
+      background: lighten($secondary, 5%)
+
+.is-landing-2nd
+  +desktop, +tablet
+    .hero-content
+      padding-bottom: 60px !important
+      padding-top: 60px !important
+
+  .title
+    line-height: 1.1
+    color: $secondary
+    text-transform: uppercase
+
+  .feature
+    margin-bottom: 100px
+    &:last-child
+      margin-bottom: 0
+
+.is-landing-cta
+  .button
+    margin-top: 10px
+    background: $secondary
+    border-color: $background
+    border-width: 2px
+    color: $background
+    &:hover
+      background: lighten($secondary, 5%)
+
+.is-landing-faq
+  $text: #364964
+  color: $text
+
+  .title
+    font-weight: 500
+    color: $text
+
+  +desktop, +tablet
+    .hero-content
+      padding-bottom: 60px !important
+      padding-top: 60px !important
+
+  .a, .email
+    font-weight: 400
+
+  .email
+    padding-top: 60px
+    font-size: $size-5
+
+  .q
+    font-size: $size-5
+    font-weight: 600
+    margin-bottom: 4px
+
+  .question
+    padding: 20px 0
+    text-align: left
+    border-top: 1px solid $border
+    &:first-child
+      border: none

@@ -1,0 +1,68 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    //- ============== Mobile Things ==============
+    meta(name='viewport', content='width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, user-scalable=no')
+    meta(name='HandheldFriendly' content='True')
+    //- meta(name='MobileOptimized' content='320')
+    meta(http-equiv='cleartype' content='on')
+
+    //- ============== Android
+    meta(name='mobile-web-app-capable', content='yes')
+    meta(name='application-name', content='Web Starter Kit')
+
+    //- ============== iOS ==============
+    meta(name='apple-touch-fullscreen', content='yes')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+    meta(name='apple-mobile-web-app-title', content='App name')
+
+    //- ============== Mobile Status Bar ==============
+    meta(name='theme-color' content='#2F3BA2')
+
+    //- ============== SEO ==============
+    title=title||'App'
+    meta(name='description', content="media.")
+    meta(name='keywords', content='blah')
+    link(rel='shortcut icon', href='#{assetUrl}/favicon.ico')
+
+    //- ============== Social ==============
+    block fbTags
+      //- https://developers.facebook.com/docs/sharing/best-practices#tags
+      //- https://developers.facebook.com/tools/debug/
+      meta(property='og:type',content='')
+      meta(property='og:site_name', content='')
+      meta(property='og:title', content='')
+      meta(property='og:description', content='')
+      meta(property='og:url', content='')
+      //- 1200 x 630 pixels for the best display on high resolution devices.
+      meta(property='og:image', content='')
+      //- meta(property='og:app_id', content='[FB_APP_ID]')
+
+    //- block twitterTags
+      //- https://dev.twitter.com/cards/types/summary-large-image
+      meta(name='twitter:card', content='summary_large_image')
+      meta(name='twitter:site', content='@username')
+      meta(name='twitter:title', content='')
+      meta(name='twitter:description', content='')
+      meta(name='twitter:image', content='')
+
+    //- Script loader https://github.com/muicss/loadjs
+    script.
+      !function(n,o){function e(n,o){n=n.push?n:[n];var e,t,r,i,u=[],f=n.length,c=f;for(e=function(n,e){e.length&&u.push(n),c-=1,0===c&&o(u)};f--;)t=n[f],r=l[t],r?e(t,r):(i=d[t]=d[t]||[],i.push(e))}function t(n,o){if(n){var e=d[n];if(l[n]=o,e)for(;e.length;)e[0](n,o),e.splice(0,1)}}function r(n,e){var t=o.createElement("script");t.src=n,t.onload=t.onerror=function(o){var r=t.parentNode;r&&r.removeChild(t),t=null,e(n,o.type)},f.appendChild(t)}function i(n,o){n=n.push?n:[n];var e,t=n.length,i=t,u=[];for(e=function(n,e){"error"===e&&u.push(n),i-=1,0===i&&o(u)};t--;)r(n[t],e)}function u(o,e,r,u){var f,l,d;if(e&&!e.call&&(f=e),l=f?r:e,d=f?u:r,f){if(f in a)throw new Error("LoadJS: Bundle already defined");a[f]=!0}n.setTimeout(function(){i(o,function(n){n.length?(d||c)(n):(l||c)(),t(f,n)})},0)}var f=o.head,c=function(){},a={},l={},d={};u.ready=function(n,o,t){return e(n,function(n){n.length?(t||c)(n):(o||c)()}),u},u.done=function(n){t(n,[])},n.loadjs=u}(window,document);
+
+    block css
+    block scripts
+
+  body
+    | <!--[if lt IE 10]>
+    | <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser.</a></p>
+    | <![endif]-->
+
+    block svg
+      include defs.svg
+
+    block body

@@ -1,0 +1,124 @@
+extends layouts/base
+
+block css
+  link(href='#{assetUrl}/css/bundle.css?v=#{version}', rel='stylesheet')
+
+block body
+
+  header.header.has-shadow
+    .container.is-fluid
+      // Left side
+      .header-left
+        a.header-item(href='#')
+          img(src='images/bulma.png', alt='Logo')
+        a.header-tab(href='#')
+          | Tab
+        a.header-tab.is-active(href='#')
+          | Active tab
+
+      //- Hamburger menu (on mobile)
+      span.header-toggle.is-active
+        span
+        span
+        span
+      // Right side
+      .header-right.header-menu.is-active
+        span.header-item
+          a(href='#') Nav item
+        span.header-item
+          a(href='#'): strong Other nav item
+        span.header-item
+          a.button.is-primary.is-pill(href='#'): strong Button
+
+  section.section
+    .container.is-fluid
+      .heading
+        h1.title Section
+        h2.subtitle.highlight
+          | A simple container to divide your page into
+          strong sections
+          | , like the one you&apos;re currently reading
+
+
+  section.hero.is-warning.is-bold
+    .hero-content
+      .container
+        h1.title Hero title
+        h2.subtitle Hero subtitle
+
+
+  // Main container
+  nav.navbar
+    // Left side
+    .navbar-left
+      .navbar-item
+        p.subtitle.is-5
+          strong 123
+          |  posts
+      .navbar-item
+        p.control.is-grouped
+          input.input(type='text', placeholder='Find a post')
+          button.button
+            | Search
+    // Right side
+    .navbar-right
+      p.navbar-item
+        strong All
+      p.navbar-item
+        a(href='#') Published
+      p.navbar-item
+        a(href='#') Drafts
+      p.navbar-item
+        a(href='#') Deleted
+      p.navbar-item
+        a.button.is-success New
+
+  section.hero.is-warning.ium
+    // Hero header: will stick at the top
+    .hero-header
+      header.header
+        .container
+          .header-left
+            a.header-item(href='#')
+              img(src='images/bulma-white.png', alt='Logo')
+          span.header-toggle
+            span
+            span
+            span
+          .header-right.header-menu
+            span.header-item
+              a.is-active(href='#') Home
+            span.header-item
+              a(href='#') Examples
+            span.header-item
+              a(href='#') Documentation
+            span.header-item
+              a.button.is-primary.is-inverted
+                i.fa.fa-github
+                |               Download
+    // Hero content: will be in the middle
+    .hero-content
+      .container
+        h1.title
+          | Title
+        h2.subtitle
+          | Subtitle
+    // Hero footer: will stick at the bottom
+    .hero-footer
+      nav.tabs
+        .container
+          ul
+            li.is-active
+              a(href='#') Overview
+            li
+              a(href='#') Modifiers
+            li
+              a(href='#') Grid
+            li
+              a(href='#') Elements
+            li
+              a(href='#') Components
+            li
+              a(href='#') Navbar
+            li
+              a(href='#') Layout
