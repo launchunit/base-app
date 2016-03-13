@@ -11,7 +11,7 @@ const path = require('path'),
 /**
  * Constants
  */
-const PORT = 3999,
+const PORT = 5003,
   PRODUCTION = process.env.NODE_ENV === 'production';
 
 
@@ -134,7 +134,7 @@ gulp.task('sass', function(done) {
     // Only Minify In Production
     .pipe(gulpif(PRODUCTION, csso()))
     .pipe(rename({
-      basename: 'bundle',
+      basename: 'style',
     }))
     .pipe(size({
       showFiles: true
@@ -153,18 +153,9 @@ gulp.task('sass', function(done) {
 });
 
 /**
- * Assets Watcher
+ * SPA Dev Server
  */
-gulp.task('assets:watch', function() {
-  gulp.watch('./sass/**/*.sass', ['sass']);
-  gulp.watch('./svg/**/*.svg', ['svg']);
-  gulp.watch('./img/*', ['img']);
-});
-
-/**
- * SPA Watch Dev Server
- */
-gulp.task('spa:watch', ['jade','sass','img'], function() {
+gulp.task('spa', ['jade','sass','img'], function() {
 
   const Opts = {
     publicPath: path.join(__dirname, '../web/public'),
@@ -194,6 +185,15 @@ gulp.task('spa:watch', ['jade','sass','img'], function() {
     console.log(`Listening at ${PORT}`);
     require('open')(`http://localhost:${PORT}`);
   });
+});
+
+/**
+ * Assets Watcher
+ */
+gulp.task('watch', function() {
+  gulp.watch('./sass/**/*.sass', ['sass']);
+  gulp.watch('./svg/**/*.svg', ['svg']);
+  gulp.watch('./img/*', ['img']);
 });
 
 /**
