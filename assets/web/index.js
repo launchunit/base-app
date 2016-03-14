@@ -10,4 +10,5 @@ const $ = require('./cash');
 
 $('.is-cta').on('click', function(e) {
   e.preventDefault();
+  alert('HEllo');
 });

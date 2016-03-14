@@ -6,8 +6,10 @@ block css
 
 block scripts
   script.
-    loadjs(['#{assetUrl}/js/web.js?v=#{version}'], function() {
-      loadjs('https://cdn.plaid.com/link/stable/link-initialize.js',function() {
+    loadjs([
+      'https://cdn.plaid.com/link/stable/link-initialize.js',
+      '#{assetUrl}/js/web.js?v=#{version}'
+    ], function() {
 
         // == Load other non-app scripts such as GA here ==
 
@@ -20,7 +22,6 @@ block scripts
         ga('create', 'UA-XXXXX-X', 'auto');
         ga('send', 'pageview');
         */
-      });
     });
 
 
@@ -48,36 +49,36 @@ block body
     .hero-content
       .container
         .columns
-          .column.is-half
+          .column.is-6
             h1.title.is-4 Smart Savings.
             p Money.ai uses a statistical approach to compare your spending to that of the people around you.
             p Don’t worry, all data is anonymous.
 
-          .column
+          .column.is-5.is-offset-1
             img(src='#{assetUrl}/img/screen1.png', alt='smart savings')
 
   section.hero.is-landing-2nd.is-medium.is-bg
     .hero-content
       .container
         .columns
-          .column
+          .column.is-5
             img(src='#{assetUrl}/img/screen2.png', alt='smart savings')
 
-          .column.is-half
+          .column.is-6.is-offset-1
             h1.title.is-4 Smart Monitoring.
-            p Money.ai keeps an eye on your bank account and credit cards. If anything seems out of your typical spending habbits, we’ll check in with you.
+            p Money.ai keeps an eye on your bank account and credit cards. If anything seems out of your typical spending habits, we’ll check in with you.
             p Never forget to pay your credit card or rent again.
 
   section.hero.is-landing-2nd.is-medium
     .hero-content
       .container
         .columns
-          .column.is-half
+          .column.is-6
             h1.title.is-4 Smart Analysis.
             p Our machine learning algorithms build your personal revenue and expense profile and will isolate specific events like a trip, for instance.
             p This way you can really understand what’s happening with your money. Because in the end, it shouldn’t be this complicated.
 
-          .column
+          .column.is-5.is-offset-1
             img(src='#{assetUrl}/img/screen3.png', alt='smart savings')
 
 
