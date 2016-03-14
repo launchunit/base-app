@@ -152,6 +152,30 @@ gulp.task('sass', function(done) {
     .pipe(gulp.dest('../web/public/css'));
 });
 
+
+/**
+ * JS
+ */
+gulp.task('js', function(done) {
+
+  const Opts = {
+    bailOnError: true,
+    publicPath: path.join(__dirname, '../web/public'),
+    locals: require('config-loader')({
+      configFilePath: '../web/config.js'
+    }).views
+  };
+
+  // Dev or Prod Webpack Config
+  var file = './webpack.config.' + (PRODUCTION?'prod':'dev');
+
+  require('webpack')(require(file)(Opts), (err, stats) => {
+    if (err) console.log(err.message);
+    else console.log(`Webpack Release #${stats.hash}`);
+    done();
+  });
+});
+
 /**
  * SPA Dev Server
  */
@@ -190,26 +214,14 @@ gulp.task('spa', function() {
 /**
  * Assets Watcher
  */
-gulp.task('watch', ['jade','sass','img'], function() {
-  gulp.watch('./sass/**/*.sass', ['sass']);
-  gulp.watch('./svg/**/*.svg', ['svg']);
-  gulp.watch('./img/*', ['img']);
+gulp.task('watch', ['build'], function() {
+  gulp.watch('sass/**/*.sass', ['sass']);
+  gulp.watch('svg/**/*.svg', ['svg']);
+  gulp.watch('img/*', ['img']);
+  gulp.watch('web/**/*.js', ['js']);
 });
 
 /**
- * Prod Build
+ * Build
  */
-gulp.task('build', ['svg','sass','img'], function() {
-
-  const Opts = {
-    publicPath: path.join(__dirname, '../web/public'),
-    locals: require('config-loader')({
-      configFilePath: '../web/config.js'
-    }).views
-  };
-
-  config = require('./webpack.config.prod')(Opts),
-  require('webpack')(config, (err, stats) => {
-    console.log(`Webpack Release #${stats.hash}`);
-  });
-});
+gulp.task('build', ['svg','sass','img', 'js']);

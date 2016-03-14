@@ -71,37 +71,49 @@ $border: darken(#F7F9FA, 5%) //lighten($grey-light, 4%)
       background: lighten($secondary, 5%)
 
 .is-landing-2nd
+  &.is-bg
+    background: #fafafa
+    border-top: 1px solid $border
+    border-bottom: 1px solid $border
+
   +desktop, +tablet
+    .columns
+      align-items: center
+
     .hero-content
-      padding-bottom: 60px !important
-      padding-top: 60px !important
+      max-width: 640px
+      margin-left: auto
+      margin-right: auto
+      padding-bottom: 40px !important
+      padding-top: 50px !important
+
+  +mobile
+    .title
+      margin-bottom: 10px
+
+    .hero-content
+      padding-bottom: 30px !important
+      padding-top: 35px !important
+
+    &.is-bg .columns
+      flex-direction: column-reverse
+
+  img
+    max-width: 300px
+    border: 2px solid $border
+    border-radius: 4px
 
   .title
     line-height: 1.1
     color: $secondary
     font-weight: 400
-    margin-bottom: 8px
 
   p
     color: $secondary
-    margin-bottom: 20px
+    margin-top: 8px
     font-weight: 500
     text-align: left
 
-
-  .feature
-    padding-bottom: 60px
-    &:last-child
-      padding-bottom: 0
-
-  .column
-    padding-left: 25px
-    padding-right: 25px
-
-  img
-    // max-width: 300px
-    border: 2px solid $border
-    border-radius: 4px
 
 .is-landing-cta
   .button

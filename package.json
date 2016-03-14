@@ -59,16 +59,13 @@
   },
   "scripts": {
     "assets:watch": "gulp --cwd assets watch",
-
     "assets:build": "NODE_ENV=production gulp --cwd assets build",
     "heroku-postbuild": "npm run assets:build",
     "test": "ava tests/index.js",
-
     "api": "NODE_ENV=production node --optimize_for_size --max_old_space_size=400 --gc_interval=100 api/server.js",
     "web": "NODE_ENV=production node --optimize_for_size --max_old_space_size=400 --gc_interval=100 web/server.js",
-
     "api:watch": "nodemon api/server.js",
-    "web:watch": "(nodemon web/server.js -i /api/ /assets/ /web/public/) & (npm run assets:watch)",
+    "web:watch": "(nodemon web/server.js -i api/ -i assets/ -i web/public/) & (npm run assets:watch)",
     "spa:watch": "gulp --cwd assets spa watch"
   }
 }

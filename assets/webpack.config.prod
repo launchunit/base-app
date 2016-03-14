@@ -8,6 +8,8 @@ module.exports = opts => {
 
   return {
 
+    bail: opts.bailOnError || false,
+
     devtool: 'source-map',
 
     entry: {
@@ -52,7 +54,10 @@ module.exports = opts => {
       loaders: [{
         test: /\.jsx?/,
         loader: 'babel',
-        include: path.join(__dirname,'spa')
+        include: [
+          path.join(__dirname,'spa'),
+          path.join(__dirname,'web')
+        ]
       }]
     }
 

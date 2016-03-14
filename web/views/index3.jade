@@ -46,25 +46,39 @@ block body
 
   section.hero.is-landing-2nd.is-medium
     .hero-content
-      .container.is-fluid
+      .container
         .columns
-          .column.is-third
+          .column.is-half
             h1.title.is-4 Smart Savings.
-            p Money.ai uses a statistical approach to compare your spending pattern to that of the people around you. Don’t worry, all data is anonymous. We just make sure that you’re getting the best deals on rent, food and other spending area.
+            p Money.ai uses a statistical approach to compare your spending to that of the people around you.
+            p Don’t worry, all data is anonymous.
 
+          .column
             img(src='#{assetUrl}/img/screen1.png', alt='smart savings')
 
-          .column.is-third
+  section.hero.is-landing-2nd.is-medium.is-bg
+    .hero-content
+      .container
+        .columns
+          .column
+            img(src='#{assetUrl}/img/screen2.png', alt='smart savings')
+
+          .column.is-half
             h1.title.is-4 Smart Monitoring.
-            p Money.ai keeps an eye on your bank account and credit cards. If anything seems out of your typical spending pattern, we’ll check in with you and make sure everything is in order. Never forget to pay your credit card or rent again.
+            p Money.ai keeps an eye on your bank account and credit cards. If anything seems out of your typical spending habbits, we’ll check in with you.
+            p Never forget to pay your credit card or rent again.
 
-            img(src='#{assetUrl}/img/screen2.png', alt='smart monitoring')
-
-          .column.is-third
+  section.hero.is-landing-2nd.is-medium
+    .hero-content
+      .container
+        .columns
+          .column.is-half
             h1.title.is-4 Smart Analysis.
-            p Most financial softwares just list your expenses by category. Money.ai takes it to the next level. Our machine learning algorithms build your personal revenue and expense profile and will isolate specific events like a trip for instance. This way you can really understand what’s happening with your money. Because in the end, it shouldn’t be this complicated.
+            p Our machine learning algorithms build your personal revenue and expense profile and will isolate specific events like a trip, for instance.
+            p This way you can really understand what’s happening with your money. Because in the end, it shouldn’t be this complicated.
 
-            img(src='#{assetUrl}/img/screen3.png', alt='smart analysis')
+          .column
+            img(src='#{assetUrl}/img/screen3.png', alt='smart savings')
 
 
   //- section.hero.is-landing-2nd.is-medium
@@ -88,7 +102,7 @@ block body
     .hero-content
       .container
         h1.title.is-3 Take control money of your money.
-        a(href='#').button.is-pill.is-wider.is-medium GET STARTED
+        a(href='#').button.is-pill.is-wider.is-medium.is-cta GET STARTED
 
 
   //- section.hero.is-medium.is-landing-faq
