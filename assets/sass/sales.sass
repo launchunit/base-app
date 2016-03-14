@@ -1,0 +1,59 @@
+
+/**
+ * Sales App Style
+ */
+.is-landing
+  +desktop, +tablet
+    .hero-content
+      padding-bottom: 60px !important
+
+  .is-logo
+    display: inline-block
+    margin-bottom: 100px
+    max-width: 200px
+    img
+      width: 100%
+
+  .title, .subtitle
+    text-shadow: 1px 2px 2px rgba(0,0,0,0.1)
+    line-height: 1.1
+    color: $background !important
+
+  .subtitle
+    margin-top: 5px
+
+  .is-cta
+    margin-top: 30px
+    height: 50px
+    background: $secondary
+    border-color: $background
+    border-width: 2px
+    color: $background
+    &:hover
+      background: lighten($secondary, 5%)
+
+.is-landing-2nd
+  +desktop, +tablet
+    .hero-content
+      padding-bottom: 60px !important
+      padding-top: 60px !important
+
+  .title
+    line-height: 1.1
+    color: $secondary
+    text-transform: uppercase
+
+  .feature
+    margin-bottom: 100px
+    &:last-child
+      margin-bottom: 0
+
+.is-landing-cta
+  .button
+    margin-top: 10px
+    background: $secondary
+    border-color: $background
+    border-width: 2px
+    color: $background
+    &:hover
+      background: lighten($secondary, 5%)
