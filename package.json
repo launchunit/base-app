@@ -8,6 +8,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.15.0",
+    "cash-dom": "^1.0.0",
     "config-loader": "https://github.com/launchunit/config-loader.git",
     "cortado": "https://github.com/launchunit/cortado.git",
     "deep-freeze": "0.0.1",
@@ -18,11 +19,11 @@
     "logger": "https://github.com/launchunit/logger.git",
     "mongodb-client": "https://github.com/launchunit/mongodb-client.git",
     "promise-helpers": "https://github.com/launchunit/promise-helpers.git",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
     "redis-client": "https://github.com/launchunit/redis-client.git",
     "serve-static": "^1.10.2",
-    "to-fast-properties": "^1.0.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "to-fast-properties": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",

@@ -1,7 +1,8 @@
 
 process.chdir(__dirname);
 
-const path = require('path'),
+const _ = require('lodash'),
+  path = require('path'),
   gulp = require('gulp'),
   size = require('gulp-size'),
   rename = require('gulp-rename'),
@@ -12,7 +13,14 @@ const path = require('path'),
  * Constants
  */
 const PORT = 5003,
-  PRODUCTION = process.env.NODE_ENV === 'production';
+  PRODUCTION = process.env.NODE_ENV === 'production',
+  LOCALS = Object.assign({},
+    require('config-loader')({
+      configFilePath: '../web/config.js'
+    }).views);
+
+_.pickBy(process.env, _.isNumber);
+
 
 
 /**
@@ -77,10 +85,6 @@ gulp.task('img', function() {
 gulp.task('jade', ['svg'], function() {
 
   const jade = require('gulp-jade');
-
-  const LOCALS = require('config-loader')({
-    configFilePath: '../web/config.js'
-  }).views;
 
   return gulp.src('../web/views/layouts/spa.jade')
     .pipe(plumber())
@@ -152,7 +156,6 @@ gulp.task('sass', function(done) {
     .pipe(gulp.dest('../web/public/css'));
 });
 
-
 /**
  * JS
  */
@@ -161,9 +164,7 @@ gulp.task('js', function(done) {
   const Opts = {
     bailOnError: true,
     publicPath: path.join(__dirname, '../web/public'),
-    locals: require('config-loader')({
-      configFilePath: '../web/config.js'
-    }).views
+    locals: LOCALS
   };
 
   // Dev or Prod Webpack Config
@@ -183,9 +184,7 @@ gulp.task('spa', function() {
 
   const Opts = {
     publicPath: path.join(__dirname, '../web/public'),
-    locals: require('config-loader')({
-      configFilePath: '../web/config.js'
-    }).views
+    locals: LOCALS
   };
 
   const app = require('express')(),
