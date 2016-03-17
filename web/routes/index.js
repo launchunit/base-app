@@ -3,7 +3,10 @@
 // app.Server.use('/signin', require('./signin'));
 
 app.Server.use('*', (req, res, next) => {
-  // return res.render('index');
-  // return res.render('index2');
-  return res.render('index3');
+
+  // return res.render('style_guide');
+  // return res.render('salesjedi_dashboard');
+  // return res.render('salesjedi');
+  // return res.render('money_ai');
+  return res.render('core_email');
 });

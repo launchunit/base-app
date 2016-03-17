@@ -16,6 +16,11 @@ exports.defaults = {
 
   redisUrl: process.env.REDIS_URL || '',
 
+  plaid: {
+    id: process.env.PLAID_ID || '',
+    secret: process.env.PLAID_SECRET || ''
+  }
+
   // String or comma separated keys for key rotation
   // HMAC_salt: process.env.HMAC_SALT || 'sample-salt-key',
 };
