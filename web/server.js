@@ -5,8 +5,6 @@
  * Module Dependencies
  */
 const deepFreeze = require('deep-freeze'),
-  BodyParser = require('body-parser'),
-  Hpp = require('hpp'),
   Static = require('serve-static'),
   Middleware = require('cortado').Middleware;
 
@@ -99,7 +97,7 @@ app.Server.use(Static(__dirname + '/public', {
 /**
  * Bodyparser
  */
-app.Server.use(BodyParser.json({
+app.Server.use(require('body-parser').json({
   inflate: false,
   strict: true
 }));
@@ -107,7 +105,7 @@ app.Server.use(BodyParser.json({
 /**
  * HTTP Parameter Pollution Attacks
  */
-app.Server.use(Hpp({
+app.Server.use(require('hpp')({
   checkQuery: true,
   checkBody: false
 }));

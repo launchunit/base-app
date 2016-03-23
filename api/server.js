@@ -4,9 +4,7 @@
 /**
  * Module Dependencies
  */
-const BodyParser = require('body-parser'),
-  Hpp = require('hpp'),
-  mongoDB = require('mongodb-client'),
+const mongoDB = require('mongodb-client'),
   promiseHelpers = require('promise-helpers'),
   Middleware = require('cortado').Middleware,
   Redis = require('redis-client');
@@ -83,7 +81,7 @@ if (app.config.masterToken) {
 /**
  * Bodyparser
  */
-app.Server.use(BodyParser.json({
+app.Server.use(require('body-parser').json({
   inflate: false,
   strict: true
 }));
@@ -91,7 +89,7 @@ app.Server.use(BodyParser.json({
 /**
  * HTTP Parameter Pollution Attacks
  */
-app.Server.use(Hpp({
+app.Server.use(require('hpp')({
   checkQuery: true,
   checkBody: false
 }));

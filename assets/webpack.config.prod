@@ -39,9 +39,12 @@ module.exports = opts => {
         output: {
           comments: false
         },
-        compress: {
-          properties: true,
+        compressor: {
+          pure_getters: true,
           drop_console: true,
+          unsafe_comps: true,
+          unsafe: true,
+          warnings: false,
           screw_ie8: true,
           drop_debugger: true,
           dead_code: true,

@@ -61,7 +61,7 @@ if (window.location.pathname.trim() === '/app/') {
     `);
 
     // Display Email Content
-    fetch('https://api.nylas.com/threads', {
+    fetch('https://api.nylas.com/threads?view=expanded', {
       json: true,
       headers: {
         'authorization': `Basic ${btoa(account.access_token+':')}`,
@@ -73,6 +73,7 @@ if (window.location.pathname.trim() === '/app/') {
     })
     .then(res => {
 
+      console.log('-- threads --');
       console.log(res);
 
       res =_.map(res, i => {
@@ -88,7 +89,38 @@ if (window.location.pathname.trim() === '/app/') {
       });
 
       $('#email').append(`<div id="email-content">${res}</div>`);
+    });
+
+
+    fetch('https://api.nylas.com/messages', {
+      json: true,
+      headers: {
+        'authorization': `Basic ${btoa(account.access_token+':')}`,
+        'Content-Type': 'application/json'
+      }
     })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+
+      console.log('-- messages --');
+      console.log(res);
+
+      // res =_.map(res, i => {
+      //   return `<div>
+      //     <hr>
+      //     <p>id: ${JSON.stringify(i.id)}</p>
+      //     <p>labels: ${JSON.stringify(i.labels)}</p>
+      //     <p>from: ${JSON.stringify(i.participants)}</p>
+      //     <p>subject: ${i.subject}</p>
+      //     <p>unread: ${i.unread.toString()}</p>
+      //     <p>snippet: ${i.snippet}</p>
+      //   </div>`
+      // });
+
+      // $('#email').append(`<div id="email-content">${res}</div>`);
+    });
 
   }
 }

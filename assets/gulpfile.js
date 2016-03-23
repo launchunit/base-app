@@ -34,12 +34,18 @@ gulp.task('svg', function() {
     .pipe(plumber())
     .pipe(svgSprite({
       shape: {
-        dimension: { attributes: false }
+        dimension: {
+          attributes: false
+        },
+        id: {
+          generator: name => `svg-${name}`
+        }
       },
       svg: {
         xmlDeclaration: false,
         doctypeDeclaration: false,
-        dimensionAttributes: false,
+        dimensionAttributes: true,
+        namespaceIDs: false
       },
       mode: {
         symbol: {
@@ -223,4 +229,4 @@ gulp.task('watch', ['build'], function() {
 /**
  * Build
  */
-gulp.task('build', ['svg','sass','img', 'js']);
+gulp.task('build', ['jade','sass','img','js']);

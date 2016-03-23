@@ -16,11 +16,11 @@ module.exports = opts => {
       app: [
         'eventsource-polyfill', // necessary for hot reloading with IE
         'webpack-hot-middleware/client',
-        './spa/index',
+        './spa/index.js',
         opts.publicPath + '/css/style.css', // Including CSS
       ],
       web: [
-        './web/index'
+        './web/index.js'
       ],
     },
 

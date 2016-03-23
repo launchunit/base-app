@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { NICE, SUPER_NICE, num } from './colors';
+import Spinner from '../components/spinner';
 
 class Counter extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export class App extends Component {
   render() {
     return (
       <div>
+        <Spinner />
         <p>{num()}</p>
         <Counter increment={1} color={NICE} />
         <Counter increment={5} color={SUPER_NICE} />
