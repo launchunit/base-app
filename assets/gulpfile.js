@@ -15,12 +15,14 @@ const _ = require('lodash'),
 const PORT = 5003,
   PRODUCTION = process.env.NODE_ENV === 'production',
   LOCALS = Object.assign({},
+    // Use Env Vars
+    _.pickBy(process.env, (i, k) => {
+      return k.toUpperCase() === k &&
+             k.charAt(0) !== '_';
+    }),
     require('config-loader')({
       configFilePath: '../web/config.js'
     }).views);
-
-_.pickBy(process.env, _.isNumber);
-
 
 
 /**

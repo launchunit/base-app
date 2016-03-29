@@ -74,6 +74,7 @@ if (window.location.pathname.trim() === '/app/') {
     .then(res => {
 
       console.log('-- threads --');
+      res.length = 15;
       console.log(res);
 
       res =_.map(res, i => {
@@ -105,7 +106,9 @@ if (window.location.pathname.trim() === '/app/') {
     .then(res => {
 
       console.log('-- messages --');
+      res.length = 15;
       console.log(res);
+      // console.log(res);
 
       // res =_.map(res, i => {
       //   return `<div>
